@@ -1,8 +1,8 @@
 "use client"
-
+import Image from "next/image"
 import { useEffect, useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { FileType } from "lucide-react"
+import { FileType, Fullscreen } from "lucide-react"
 
 interface File {
   _id: string
@@ -44,7 +44,7 @@ export function FileList() {
 
   const renderFilePreview = (file: File) => {
     if (file.contentType.startsWith("image/")) {
-      return <img src={`/api/files/${file._id}`} alt={file.filename} className="w-16 h-16 object-cover rounded" />
+      return <Image src={`/api/files/${file._id}`} alt={file.filename} className="w-20 h-20 bg-slate-400  object-cover rounded" width={400} height={400} />
     } else if (file.contentType.startsWith("video/")) {
       return (
         <video className="w-16 h-16 object-cover rounded">
@@ -57,9 +57,9 @@ export function FileList() {
   }
 
   return (
-    <Card>
+    <Card className="bg-slate-300">
       <CardHeader>
-        <CardTitle className="flex items-center gap-2">
+        <CardTitle className="flex items-center  gap-2">
           <FileType className="w-5 h-5" />
           Uploaded Files
         </CardTitle>
@@ -72,7 +72,7 @@ export function FileList() {
         ) : (
           <div className="space-y-2">
             {files.map((file) => (
-              <div key={file._id} className="flex items-center justify-between p-2 rounded-lg border">
+              <div key={file._id} className="flex  border-slate-900 items-center justify-between p-2 rounded-lg border">
                 <div className="flex items-center space-x-4">
                   {renderFilePreview(file)}
                   <div className="flex flex-col">
