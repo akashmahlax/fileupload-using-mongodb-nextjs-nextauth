@@ -1,5 +1,9 @@
 import { MongoClient } from "mongodb"
 
+
+// MONGODB_URI=mongodb+srv://akashmahla:5MumP19NdVohkbx2@cluster0.hlo2i.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+//this is mongodb uri
+
 if (!process.env.MONGODB_URI) {
   throw new Error('Invalid/Missing environment variable: "MONGODB_URI"')
 }
